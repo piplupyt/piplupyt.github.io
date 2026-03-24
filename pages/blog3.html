@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Advanced TypeScript Tips - Terminal Portfolio</title>
+		<link rel="stylesheet" href="../style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap"
+			rel="stylesheet"
+		/>
+		<style>
+			.blog-content {
+				max-width: 800px;
+				margin: 0 auto;
+				padding: 40px 24px;
+			}
+
+			.blog-header {
+				margin-bottom: 40px;
+				text-align: center;
+			}
+
+			.blog-title {
+				color: var(--terminal-green);
+				font-size: 2.5rem;
+				margin-bottom: 16px;
+				font-weight: 700;
+			}
+
+			.blog-meta {
+				display: flex;
+				justify-content: center;
+				gap: 24px;
+				margin-bottom: 24px;
+				font-size: 14px;
+			}
+
+			.blog-meta span {
+				color: var(--terminal-gray);
+			}
+
+			.blog-meta .category {
+				color: var(--terminal-purple);
+				font-weight: 500;
+				text-decoration: none;
+				transition: color 0.3s ease;
+			}
+
+			.blog-meta .category:hover {
+				color: var(--terminal-green);
+				cursor: pointer;
+			}
+
+			.blog-body {
+				line-height: 1.8;
+				color: var(--terminal-text);
+			}
+
+			.blog-body h2 {
+				color: var(--terminal-blue);
+				margin-top: 40px;
+				margin-bottom: 20px;
+				font-size: 1.8rem;
+			}
+
+			.blog-body h3 {
+				color: var(--terminal-green);
+				margin-top: 30px;
+				margin-bottom: 15px;
+				font-size: 1.4rem;
+			}
+
+			.blog-body p {
+				margin-bottom: 20px;
+			}
+
+			.blog-body ul,
+			.blog-body ol {
+				margin-bottom: 20px;
+				padding-left: 30px;
+			}
+
+			.blog-body li {
+				margin-bottom: 8px;
+			}
+
+			.blog-body code {
+				background: var(--terminal-border);
+				color: var(--terminal-green);
+				padding: 2px 6px;
+				border-radius: 3px;
+				font-family: var(--font-mono);
+				font-size: 0.9em;
+			}
+
+			.blog-body pre {
+				background: var(--terminal-bg);
+				border: 1px solid var(--terminal-border);
+				border-radius: 8px;
+				padding: 20px;
+				overflow-x: auto;
+				margin: 20px 0;
+			}
+
+			.blog-body pre code {
+				background: none;
+				padding: 0;
+				color: var(--terminal-text);
+			}
+
+			.blog-body blockquote {
+				border-left: 4px solid var(--terminal-green);
+				padding-left: 20px;
+				margin: 20px 0;
+				color: var(--terminal-gray);
+				font-style: italic;
+			}
+
+			.back-to-blog {
+				margin-bottom: 40px;
+				text-align: left;
+			}
+
+			.back-link {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				color: var(--terminal-blue);
+				text-decoration: none;
+				padding: 8px 16px;
+				border: 1px solid var(--terminal-border);
+				border-radius: 4px;
+				transition: all 0.3s ease;
+				font-family: var(--font-mono);
+			}
+
+			.back-link:hover {
+				background: var(--terminal-green);
+				color: var(--terminal-bg);
+				border-color: var(--terminal-green);
+				transform: translateY(-1px);
+			}
+
+			.back-link:hover .prompt {
+				color: var(--terminal-bg);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="blog-content">
+			<div class="back-to-blog">
+				<a href="../blog.html" class="back-link">
+					<span class="prompt">$</span> cd ../blog
+				</a>
+			</div>
+
+			<header class="blog-header">
+				<h1 class="blog-title">Advanced TypeScript Tips</h1>
+				<div class="blog-meta">
+					<span class="date">2024-01-20</span>
+					<a href="../category-技術.html" class="category"
+						>Technology</a
+					>
+					<span class="read-time">Reading time: 8 min</span>
+				</div>
+			</header>
+
+			<article class="blog-body">
+				<p>
+					TypeScript extends JavaScript with a powerful type system.
+					In this article, I share practical advanced techniques that
+					help teams build safer and more maintainable applications.
+				</p>
+
+				<h2>Advanced Generic Patterns</h2>
+
+				<p>
+					Generics let you write reusable logic without losing type
+					safety.
+				</p>
+
+				<h3>1. Conditional Types</h3>
+
+				<p>Conditional types select a type based on a rule:</p>
+
+				<pre><code>type NonNullable&lt;T&gt; = T extends null | undefined ? never : T;
+
+type Example1 = NonNullable&lt;string | null&gt;; // string
+type Example2 = NonNullable&lt;number | undefined&gt;; // number</code></pre>
+
+				<h3>2. Mapped Types</h3>
+
+				<p>Mapped types transform an existing type into a new one:</p>
+
+				<pre><code>type Partial&lt;T&gt; = {
+    [P in keyof T]?: T[P];
+};
+
+interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+
+type PartialUser = Partial&lt;User&gt;;
+// { id?: number; name?: string; email?: string; }</code></pre>
+
+				<h2>Advanced Type Operations</h2>
+
+				<h3>1. Template Literal Types</h3>
+
+				<p>Template literal types allow type-safe string patterns.</p>
+
+				<pre><code>type EventName&lt;T extends string&gt; = `on${Capitalize&lt;T&gt;}`;
+
+type MouseEvent = EventName&lt;'click'&gt;; // 'onClick'
+type KeyboardEvent = EventName&lt;'keydown'&gt;; // 'onKeydown'</code></pre>
+
+				<h3>2. Recursive Types</h3>
+
+				<p>
+					Recursive types are useful for nested structures like JSON:
+				</p>
+
+				<pre><code>type JSONValue =
+    | string
+    | number
+    | boolean
+    | null
+    | JSONValue[]
+    | { [key: string]: JSONValue };
+
+const data: JSONValue = {
+    name: "r14921a10",
+    age: 25,
+    hobbies: ["coding", "reading"],
+    address: {
+        city: "Taipei",
+        country: "Taiwan"
+    }
+};</code></pre>
+
+				<h2>Decorators</h2>
+
+				<p>
+					Decorators can wrap methods and add behavior such as
+					logging, caching, or access control.
+				</p>
+
+				<pre><code>function Log(target: any, propertyName: string, descriptor: PropertyDescriptor) {
+    const method = descriptor.value;
+
+    descriptor.value = function (...args: any[]) {
+        console.log(`Calling ${propertyName} with args:`, args);
+        return method.apply(this, args);
+    };
+}
+
+class Calculator {
+    @Log
+    add(a: number, b: number): number {
+        return a + b;
+    }
+}</code></pre>
+
+				<h2>Modules and Namespaces</h2>
+
+				<h3>1. ES6 Modules</h3>
+
+				<p>TypeScript works naturally with ES modules:</p>
+
+				<pre><code>// math.ts
+export const add = (a: number, b: number): number => a + b;
+export const subtract = (a: number, b: number): number => a - b;
+
+// main.ts
+import { add, subtract } from './math';
+import * as MathUtils from './math';</code></pre>
+
+				<h3>2. Namespaces</h3>
+
+				<p>Namespaces are another way to organize related code:</p>
+
+				<pre><code>namespace Geometry {
+    export interface Point {
+        x: number;
+        y: number;
+    }
+
+    export class Circle {
+        constructor(public center: Point, public radius: number) {}
+
+        area(): number {
+            return Math.PI * this.radius * this.radius;
+        }
+    }
+}
+
+// use namespace
+const point: Geometry.Point = { x: 0, y: 0 };
+const circle = new Geometry.Circle(point, 5);</code></pre>
+
+				<h2>Useful Utility Types</h2>
+
+				<p>
+					Built-in utility types reduce repetitive type definitions:
+				</p>
+
+				<ul>
+					<li>
+						<strong>Pick&lt;T, K&gt;</strong>: select properties K
+						from T
+					</li>
+					<li>
+						<strong>Omit&lt;T, K&gt;</strong>: remove properties K
+						from T
+					</li>
+					<li>
+						<strong>Record&lt;K, V&gt;</strong>: map keys K to
+						values V
+					</li>
+					<li>
+						<strong>Exclude&lt;T, U&gt;</strong>: remove members
+						assignable to U
+					</li>
+					<li>
+						<strong>Extract&lt;T, U&gt;</strong>: keep members
+						assignable to U
+					</li>
+				</ul>
+
+				<pre><code>interface User {
+    id: number;
+    name: string;
+    email: string;
+    password: string;
+}
+
+// remove sensitive field
+type PublicUser = Omit&lt;User, 'password'&gt;;
+
+// keep only selected fields
+type UserSummary = Pick&lt;User, 'id' | 'name'&gt;;</code></pre>
+
+				<h2>Best Practices</h2>
+
+				<h3>1. Enable Strict Type Checking</h3>
+
+				<p>
+					Use strict compiler options in <code>tsconfig.json</code>:
+				</p>
+
+				<pre><code>{
+    "compilerOptions": {
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true
+    }
+}</code></pre>
+
+				<h3>2. Let Inference Work for You</h3>
+
+				<p>
+					Rely on inference when possible and annotate intentionally:
+				</p>
+
+				<pre><code>// good practice
+const users = ['alice', 'bob', 'charlie'];
+
+// explicit only when needed
+const namedUsers: string[] = ['alice', 'bob', 'charlie'];</code></pre>
+
+				<h3>3. Prefer Unions over any</h3>
+
+				<p>
+					Avoid <code>any</code> and model real constraints with union
+					types:
+				</p>
+
+				<pre><code>// avoid
+function processData(data: any): any {
+    return data;
+}
+
+// better
+function processData(data: string | number | boolean): string | number | boolean {
+    return data;
+}</code></pre>
+
+				<h2>Conclusion</h2>
+
+				<p>
+					Advanced TypeScript features are not just language tricks.
+					They help you design clearer APIs and prevent bugs before
+					runtime.
+				</p>
+
+				<blockquote>
+					"A type system is not only a checker, but also a design
+					tool."
+				</blockquote>
+
+				<p>
+					Keep learning step by step, apply these patterns in real
+					projects, and your codebase will become easier to scale and
+					maintain.
+				</p>
+
+				<p>
+					I hope this post gives you a practical roadmap for writing
+					better TypeScript.
+				</p>
+				<br />
+				<br />
+				<p>Author: Cursor AI</p>
+			</article>
+		</div>
+
+		<script src="../dist/main.js"></script>
+	</body>
+</html>
