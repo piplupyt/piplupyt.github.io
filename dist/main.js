@@ -6,6 +6,7 @@ class TerminalPortfolio {
 		this.mobileMenu = document.querySelector(".mobile-menu");
 		this.navLinks = document.querySelectorAll(".nav-link");
 		this.currentDateElement = document.getElementById("current-date");
+		this.experienceCards = document.querySelectorAll(".experience-item");
 		this.init();
 	}
 	init() {
@@ -13,6 +14,7 @@ class TerminalPortfolio {
 		this.setupCurrentDate();
 		this.setupCategoryFilters();
 		this.setupContactEasterEgg();
+		this.setupExperienceFlipCards();
 	}
 	setupEventListeners() {
 		// 漢堡選單切換
@@ -137,6 +139,34 @@ class TerminalPortfolio {
 			const originX = rect.left + rect.width / 2;
 			const originY = rect.top + rect.height / 2;
 			this.launchFireworks(originX, originY);
+		});
+	}
+	setupExperienceFlipCards() {
+		if (!this.experienceCards.length) {
+			return;
+		}
+		this.experienceCards.forEach((card) => {
+			card.addEventListener("click", (e) => {
+				const target = e.target;
+				if (target.closest("a")) {
+					return;
+				}
+				const isFlipped = card.classList.contains("is-flipped");
+				this.experienceCards.forEach((otherCard) => {
+					otherCard.classList.remove("is-flipped");
+				});
+				if (!isFlipped) {
+					card.classList.add("is-flipped");
+				}
+			});
+		});
+		document.addEventListener("click", (e) => {
+			const target = e.target;
+			if (!target.closest(".experience-item")) {
+				this.experienceCards.forEach((card) => {
+					card.classList.remove("is-flipped");
+				});
+			}
 		});
 	}
 	launchFireworks(originX, originY) {

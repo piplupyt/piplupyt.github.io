@@ -63,19 +63,34 @@
 							<span class="btn minimize"></span>
 							<span class="btn maximize"></span>
 						</div>
-						<div class="terminal-title">about.md</div>
+						<div class="terminal-title">cd ~/about/</div>
 					</div>
 					<div class="terminal-body">
 						<div class="command-line top-command-line">
-							<span class="prompt">r14921a10@portfolio:~$</span>
+							<span class="prompt"
+								>r14921a10@portfolio:~/about$</span
+							>
 							<span class="command">glow about.md</span>
 						</div>
 						<div class="output">
-							<h2 class="terminal-text">About Me</h2>
+							<h2 class="terminal-text-h2">About Me</h2>
+
+							<h3 class="terminal-text-h3">Background</h3>
 							<p class="terminal-text">
-								I recently study in National Taiwan University,
-								majoring in cyber security.
+								I recently study in
+								<a
+									href="https://web.ee.ntu.edu.tw/"
+									target="_blank"
+									class="terminal-link"
+									>National Taiwan University Electrical
+									Engineering</a
+								>, majoring in cyber security.
 							</p>
+							<p class="terminal-text">
+								I am from Taiwan, Taipei.
+							</p>
+
+							<h3 class="terminal-text-h3">Interests</h3>
 							<p class="terminal-text">
 								I am passionate about technology and enjoy
 								learning new programming languages and
@@ -83,96 +98,217 @@
 								and solving complex problems.
 							</p>
 							<p class="terminal-text">
-								My dream is to own a super server in my own
-								home.
+								In my free time, I enjoy playing squash and
+								basketball, and sometimes watching anime and
+								playing mobile games.
+							</p>
+
+							<h3 class="terminal-text-h3">Dreams</h3>
+							<p class="terminal-text">
+								I love penguin so much, and I dream to go to
+								Antarctica one day to see them in person.
+							</p>
+							<p class="terminal-text">
+								My another dream is to own a super server in my
+								own home.
 							</p>
 
 							<br />
-							<hr />
-							<br />
+							<div class="command-line">
+								<span class="prompt"
+									>r14921a10@portfolio:~/about$</span
+								>
+								<span class="command"
+									>tdf about-skills.pdf</span
+								>
+							</div>
 
-							<h3 class="terminal-text">Skills</h3>
-							<div class="skills-grid">
-								<div class="skill-item">
-									<span class="skill-name">JavaScript</span>
-									<div class="skill-bar">
-										<div
-											class="skill-progress"
-											data-width="90%"
-										></div>
+							<div class="tdf">
+								<h2 class="">Skills</h2>
+								<div class="skills-grid">
+									<div class="skill-item">
+										<span class="skill-name"
+											>JavaScript</span
+										>
+										<div class="skill-bar">
+											<div
+												class="skill-progress"
+												data-width="90%"
+											></div>
+										</div>
 									</div>
-								</div>
-								<div class="skill-item">
-									<span class="skill-name">Python</span>
-									<div class="skill-bar">
-										<div
-											class="skill-progress"
-											data-width="85%"
-										></div>
+									<div class="skill-item">
+										<span class="skill-name">Python</span>
+										<div class="skill-bar">
+											<div
+												class="skill-progress"
+												data-width="85%"
+											></div>
+										</div>
 									</div>
-								</div>
-								<div class="skill-item">
-									<span class="skill-name">Go</span>
-									<div class="skill-bar">
-										<div
-											class="skill-progress"
-											data-width="80%"
-										></div>
+									<div class="skill-item">
+										<span class="skill-name">Go</span>
+										<div class="skill-bar">
+											<div
+												class="skill-progress"
+												data-width="80%"
+											></div>
+										</div>
 									</div>
-								</div>
-								<div class="skill-item">
-									<span class="skill-name"
-										>Couch potato 🥔</span
-									>
-									<div class="skill-bar">
-										<div
-											class="skill-progress"
-											data-width="80%"
-										></div>
+									<div class="skill-item">
+										<span class="skill-name"
+											>Couch potato 🥔</span
+										>
+										<div class="skill-bar">
+											<div
+												class="skill-progress"
+												data-width="80%"
+											></div>
+										</div>
 									</div>
 								</div>
 							</div>
 
 							<br />
-							<hr />
+							<div class="command-line">
+								<span class="prompt"
+									>r14921a10@portfolio:~/about$</span
+								>
+								<span class="command"
+									>./about-experience.sh</span
+								>
+							</div>
 							<br />
 
-							<h3 class="terminal-text">Experience</h3>
+							<h2 class="">Experience</h2>
 							<div class="experience-list">
-								<div class="experience-item">
-									<h4 class="exp-title">Master's Student</h4>
-									<p class="exp-company">
-										National Taiwan University EE
-									</p>
-									<p class="exp-period">2025 - Present</p>
-									<p class="exp-desc">NTU student</p>
+								<div class="experience-item" tabindex="0">
+									<div class="experience-card-inner">
+										<div
+											class="experience-face experience-front"
+										>
+											<h4 class="exp-title">
+												Master's Student
+											</h4>
+											<p class="exp-company">
+												National Taiwan University EE
+											</p>
+											<p class="exp-period">
+												2025 - Present
+											</p>
+											<p class="exp-desc">NTU student</p>
+											<p class="exp-flip-hint">
+												Tap to flip
+											</p>
+										</div>
+										<div
+											class="experience-face experience-back"
+										>
+											<p class="exp-back-title">
+												Highlights
+											</p>
+											<p class="exp-detail">
+												Researching cyber security and
+												systems at NTU EE, with focus on
+												practical engineering and
+												problem-solving.
+											</p>
+											<p class="exp-flip-hint">
+												Tap again to close
+											</p>
+										</div>
+									</div>
 								</div>
-								<div class="experience-item">
-									<h4 class="exp-title">Patent Attorney</h4>
-									<p class="exp-company">...</p>
-									<p class="exp-period">2026 - Present</p>
-									<p class="exp-desc">
-										Taiwan Qualified Patent Attorney
-									</p>
-									<a
-										href="https://www.twpaa.org.tw/search/"
-										target="_blank"
-										>Search here</a
-									>
+								<div class="experience-item" tabindex="0">
+									<div class="experience-card-inner">
+										<div
+											class="experience-face experience-front"
+										>
+											<h4 class="exp-title">
+												Patent Attorney
+											</h4>
+											<p class="exp-company">Taiwan</p>
+											<p class="exp-period">
+												2026 - Present
+											</p>
+											<p class="exp-desc">
+												Taiwan Qualified Patent Attorney
+											</p>
+											<p class="exp-flip-hint">
+												Tap to flip
+											</p>
+										</div>
+										<div
+											class="experience-face experience-back"
+										>
+											<p class="exp-back-title">
+												Credential
+											</p>
+											<p class="exp-detail">
+												Registered and qualified to
+												support intellectual property
+												work in Taiwan.
+											</p>
+											<a
+												href="https://www.twpaa.org.tw/search/"
+												target="_blank"
+												>Search here</a
+											>
+											<p class="exp-flip-hint">
+												Tap again to close
+											</p>
+										</div>
+									</div>
 								</div>
-								<div class="experience-item">
-									<h4 class="exp-title">
-										Bachelor of Engineering
-									</h4>
-									<p class="exp-company">
-										National Taiwan University
-									</p>
-									<p class="exp-period">2019 - 2022</p>
-									<p class="exp-desc">
-										Studied in NTU Chemical Engineering
-									</p>
+								<div class="experience-item" tabindex="0">
+									<div class="experience-card-inner">
+										<div
+											class="experience-face experience-front"
+										>
+											<h4 class="exp-title">
+												Bachelor of Engineering
+											</h4>
+											<p class="exp-company">
+												National Taiwan University
+											</p>
+											<p class="exp-period">
+												2019 - 2022
+											</p>
+											<p class="exp-desc">
+												Studied in NTU Chemical
+												Engineering
+											</p>
+											<p class="exp-flip-hint">
+												Tap to flip
+											</p>
+										</div>
+										<div
+											class="experience-face experience-back"
+										>
+											<p class="exp-back-title">
+												Foundation
+											</p>
+											<p class="exp-detail">
+												Laid a strong foundation in
+												problem-solving and analytical
+												thinking.
+											</p>
+											<p class="exp-flip-hint">
+												Tap again to close
+											</p>
+										</div>
+									</div>
 								</div>
 							</div>
+						</div>
+
+						<div class="typing-animation">
+							<div class="command-line">
+								<span class="prompt"
+									>r14921a10@portfolio:~/about$</span
+								>
+							</div>
+							<span class="cursor">_</span>
 						</div>
 					</div>
 				</div>
@@ -236,7 +372,7 @@
 			<div class="footer-bottom">
 				<div class="command-line">
 					<div class="command-row">
-						<span class="prompt">r14921a10@portfolio:~$</span>
+						<span class="prompt">r14921a10@portfolio:~/about$</span>
 						<span class="command">date</span>
 					</div>
 					<div class="output-row">
